@@ -22,7 +22,9 @@ classdef ActChannels < handle
         function self=ActChannels(channelstype, dt, Vm)
             % initiation of channels 
             % self.channelstype=channelstype;
-            % 
+            % example: 
+            %   actCh=ActChannels(channelT, [], []);
+            % initiation will give th
             self.dt = dt;
             if isempty(Vm)
                 self.Vm = linspace(-90, 20, 200)';
@@ -187,7 +189,8 @@ classdef ActChannels < handle
                 subplot(2, self.nch, k)
                 plot(self.Vm, cell2mat(self.ch_inf(k,:)))
                 hold on;
-                plot([-70, -70], [0 1],'r:')
+                plot([-70, -70], [0 1],'r--')
+                grid on; axis tight
                 try
                 legend('C-O','O-C')
                 catch
@@ -197,7 +200,8 @@ classdef ActChannels < handle
                 subplot(2, self.nch, k+self.nch)
                 plot(self.Vm, cell2mat(self.ch_tau(k,:)))
                 hold on;
-                plot([-70, -70], [0 1],'r:')
+                plot([-70, -70], [0 max(cell2mat(self.ch_tau(k,:)'))+.2],'r--')
+                grid on; axis tight
                 try
                 legend('C-O','O-C')
                 catch

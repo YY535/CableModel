@@ -22,7 +22,9 @@ classdef ActChannels < handle
         function self=ActChannels(channelstype, dt, Vm)
             % initiation of channels 
             % self.channelstype=channelstype;
-            % 
+            % example: 
+            %   actCh=ActChannels(channelT, [], []);
+            % initiation will give the properties of all nominated channels
             self.dt = dt;
             if isempty(Vm)
                 self.Vm = linspace(-90, 20, 200)';
